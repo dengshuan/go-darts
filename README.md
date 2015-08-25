@@ -43,32 +43,14 @@ import (
 )
 
 func main() {
-    d, err:= darts.Import("darts.txt", "darts.lib")
-    if err == nil {
-        if d.ExactMatchSearch([]rune("考察队员", 0)) {
-            fmt.Println("考察队员 is in dictionary")
-        }
+    d, err:= darts.Import("darts.txt", "darts.lib", true)
+    if err != nil {
+		fmt.Println(err)
+		return
     }
-}
-```
-#Code example (byte version)
-```go
-package main
-
-import (
-    "darts"
-    "fmt"
-)
-
-func main() {
-    d, err := darts.Import("darts.txt", "darts.lib")
-    if err == nil {
-        key := []byte("考察队员")
-        r := d.CommonPrefixSearch(key, 0)
-        for i := 0; i < len(r); i++ {
-            fmt.Println(string(key[:r[i].PrefixLen]))
-        }
-    }
+	if d.ExactMatchSearch([]rune("考察队员"), 0) {
+		fmt.Println("考察队员 is in dictionary")
+	}
 }
 ```
 
