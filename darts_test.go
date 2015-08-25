@@ -17,7 +17,7 @@ func TestExactMatchSearch(t *testing.T) {
     }
 }
 func TestPerf(t *testing.T) {
-    inFile := "d.txt"
+    inFile := "darts.txt"
     unifile, erri := os.Open(inFile)
     if erri != nil{
 	t.Error(erri)
